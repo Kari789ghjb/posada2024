@@ -63,7 +63,7 @@
        3
     </div>
     <div  class="divMayor" id="principal">
-        <img src="img/sofi.jpg" style="object-fit: cover; width: 100%;" class="imgs">
+        <img src="sofi.jpg" style="object-fit: cover; width: 100%;" class="imgs">
         <p class="titulo"> SOFI </p>
         <button class="btnStart" style="background-color: rgb(209, 45, 45); border-color: rgb(209, 45, 45);" onclick="preguntas()"> START GAME </button>
     </div>
@@ -113,25 +113,39 @@
 
          if (vuelta == 1) 
          {
-            b.style.backgroundImage = "url('img/sofip1.jpg')";
+            b.style.backgroundImage = "url('sofip1.jpg')";
         }
 
   
          
         if(vuelta==2)
          {
-            c.textContent = "¿Qué haría si un día se despertára hablando un idioma completamente inventado?";
-             b.style.backgroundImage = "url('img/sofip3.jpg')";
-             document.getElementById('op1').innerHTML = '<input type="radio" name="opcion" value="opcion1"> Que me revele el secreto para tomar decisiones sin miedo al fracaso';
-             document.getElementById('op2').innerHTML = '<input type="radio" name="opcion" value="opcion2"> Grabar titkos hablando';
-             document.getElementById('op3').innerHTML = '<input type="radio" name="opcion" value="opcion3"> Que me diga si algún día logré finalmente dejar de procrastinar';
+              b.style.backgroundImage = "none";
+            const video = document.createElement("video");
+            video.id = "videoFondo"; 
+            video.src = "sofip2.mov";  
+            video.autoplay = true;
+            video.loop = false;
+            video.style.position = "fixed";
+            video.style.top = 0;
+            video.style.left = 0;
+            video.style.width = "100%";
+            video.style.height = "100%";
+            video.style.objectFit = "cover";
+            video.style.zIndex = -1; 
+            video.muted = true; 
+            b.appendChild(video);
+            c.textContent = "Si pudiera hacer una fiesta temática de cualquier cosa, por más rara que sea, ¿de qué sería?";
+             document.getElementById('op1').innerHTML = '<input type="radio" name="opcion" value="opcion1"> Bélgica';
+             document.getElementById('op2').innerHTML = '<input type="radio" name="opcion" value="opcion2"> Otakus';
+             document.getElementById('op3').innerHTML = '<input type="radio" name="opcion" value="opcion3">  Bicis';
          }
 
 
          if(vuelta==3)
          {
              c.textContent = "¿Qué harías si un día te despertaras hablando un idioma completamente inventado?";
-             b.style.backgroundImage = "url('img/sofip3.jpg')";
+             b.style.backgroundImage = "url('sofip3.jpg')";
              document.getElementById('op1').innerHTML = '<input type="radio" name="opcion" value="opcion1"> Que me revele el secreto para tomar decisiones sin miedo al fracaso';
              document.getElementById('op2').innerHTML = '<input type="radio" name="opcion" value="opcion2"> Que me diga cuál es el área perfecta para mí, para no dudar más';
              document.getElementById('op3').innerHTML = '<input type="radio" name="opcion" value="opcion3"> Que me diga si algún día logré finalmente dejar de procrastinar';
@@ -140,7 +154,7 @@
          if(vuelta==4)
          {
              c.textContent = "Si fuera un personaje de cómic, ¿cuál sería su villano favorito y por qué le gustaría enfrentarse a él?";
-             b.style.backgroundImage = "url('img/sofip4.jpg')";
+             b.style.backgroundImage = "url('sofip4.jpg')";
              document.getElementById('op1').innerHTML = '<input type="radio" name="opcion" value="opcion1"> A -A- de Pretty Little Liars, para descubrir quién es de una vez';
              document.getElementById('op2').innerHTML = '<input type="radio" name="opcion" value="opcion2"> Sería el Joker, por su locura y porque me encantaría ver qué tan lejos podría llevar su caos';
              document.getElementById('op3').innerHTML = '<input type="radio" name="opcion" value="opcion3"> Harley Quinn, para reírnos juntas de todo';
@@ -150,7 +164,7 @@
          if(vuelta==5)
          {
             c.textContent = "Si su vida fuera un libro, ¿Cuál sería?";
-             b.style.backgroundImage = "url('img/sofip5.jpg')";
+             b.style.backgroundImage = "url('sofip5.jpg')";
              document.getElementById('op1').innerHTML = '<input type="radio" name="opcion" value="opcion1"> El diario de una chiquilla descontrolada';
              document.getElementById('op2').innerHTML = '<input type="radio" name="opcion" value="opcion2"> Cincuenta sombras de caos';
              document.getElementById('op3').innerHTML = '<input type="radio" name="opcion" value="opcion3"> Tal ves mañana';
