@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bungee+Shade&family=Cinzel+Decorative:wght@400;700;900&family=Julius+Sans+One&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Lilita+One&family=Monoton&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Righteous&family=Staatliches&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bungee+Shade&family=Cinzel+Decorative:wght@400;700;900&family=Julius+Sans+One&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Lilita+One&family=Monoton&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Oswald:wght@200..700&family=Righteous&family=Staatliches&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bowlby+One&family=Bungee+Shade&family=Cinzel+Decorative:wght@400;700;900&family=Gruppo&family=Julius+Sans+One&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Lilita+One&family=Monoton&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Oswald:wght@200..700&family=Righteous&family=Spicy+Rice&family=Staatliches&display=swap" rel="stylesheet">
+    <title>KARINA</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+         body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f2f2e8; /* Fondo beige */
+  }     
+
+
+   
+  .countdown{
+            font-size: 300px;
+            color: rgba(224, 223, 214, 0.713);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            position: absolute;
+            top: 25%;
+        }
+
+
+    </style>
+</head>
+<body id="body">
+    <div id="cuesti" hidden style="color: rgb(255, 255, 255); font-size: 20px;font-family: Righteous, serif; width: 100%; text-align: center; position: absolute; top: 460px; padding: 10px; background-color: rgba(0, 0, 0, 0.612);">
+        Si pudiera comer solo un platillo por el resto de su vida, ¿cuál sería?
+    </div>
+    <div id="respuestas" hidden  style="position: absolute; top: 250px; margin-top: 0;">
+        <p style="color: rgb(38, 84, 26);font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;font-size: 20px; margin-bottom: 20px;width: 100%;text-align: center;left: 60px;"> SELECCIONA UNA RESPUESTA </p>
+        <form id="quiz-form" style="text-align: left; margin: 30px; font-family: Josefin Slab, serif; font-size: 25px;width: 300px;margin-bottom: 10px;left: 15%;">
+            <label id="op1">
+                <input type="radio" name="opcion" value="opcion1" >  Pollo
+            </label>
+            <br><br>
+            <label id="op2">
+                <input type="radio" name="opcion" value="opcion2" > Bowl fit
+            </label>
+            <br><br>
+            <label id="op3">
+                <input type="radio" name="opcion" value="opcion3" >  Sushi
+            </label>
+            <br>
+        </form>
+          <button  hidden style="background-color: rgb(38, 84, 26); border-color: rgb(38, 84, 26); border: 2px solid; border-radius: 40px; width: 200px; padding: 10px; color: whitesmoke;font-size: 15px;margin-left: 70px;margin-top: 20px;" onclick="respuestas()" id="btnrespuestas"> Verificar Respuesta </button> 
+          <h2 style="margin-top: 30px;margin-left: 70px;" id="tiempo" hidden style="font-size: 8px;"> TIEMPO: 10 seg </h2>
+          <p id="resultado" style="text-align: center; font-size: 30px; left: 70px;margin-top: 30px;" >  </p>
+    </div>
+    
+    <div id="countdown" hidden class="countdown">
+       3
+    </div>
+    <div  class="divMayor" id="principal">
+        <img src="img/karina.jpeg" style="object-fit: cover; width: 100%;" class="imgk">
+        <p class="titulo"> KARINA </p>
+        <button class="btnStart" style="background-color: rgb(88, 207, 56); border-color: rgb(88, 207, 56);" onclick="preguntas()"> START GAME </button>
+    </div>
+    <a href="game.html" style="width: 100%; text-decoration: none;" id="back">
+    <div style="background-color: rgba(0, 0, 0, 0.825); color: whitesmoke; width: 100%; height: 50px; position: absolute; bottom: 0px;">
+        <p style="text-align: center; margin-top: 15px; font-family: Gruppo, serif;">  ⟸ BACK </p>
+   </div>
+   </a>
+   <script>
+
+    let sumapuntos = 0;
+    let vuelta =1;
+    let interval; 
+
+ 
+
+    function preguntas(){
+        const divfoto = document.getElementById("principal");
+        const back = document.getElementById("back");
+        const numeros = document.getElementById("countdown");
+        divfoto.hidden = true; 
+        back.hidden = true;
+        numeros.hidden = false;    
+        startCountdown(); 
+    }
+
+    
+    
+     function cuestionario() 
+     {
+        clearInterval(interval);
+        const b = document.getElementById('body');
+        const c = document.getElementById('cuesti');
+        const respuestas = document.getElementById('respuestas');
+        const tiempo = document.getElementById('tiempo');
+        const boton = document.getElementById('btnrespuestas');
+        const resultado = document.getElementById("resultado");
+        resultado.textContent = ""; 
+
+
+    
+
+         b.style.backgroundSize = "cover";
+         b.style.backgroundPosition = "center";
+         b.style.backgroundRepeat = "no-repeat";
+         c.hidden = false;
+
+         if (vuelta == 1) 
+         {
+            b.style.backgroundImage = "url('img/karip1.jpg')";
+        }
+
+  
+         
+        if(vuelta==2)
+         {
+            c.textContent = "¿Qué haría si un día se despertára hablando un idioma completamente inventado?";
+             b.style.backgroundImage = "url('img/karip2.jpg')";
+             document.getElementById('op1').innerHTML = '<input type="radio" name="opcion" value="opcion1"> Ir a la tienda a pedir algo';
+             document.getElementById('op2').innerHTML = '<input type="radio" name="opcion" value="opcion2"> Grabar tiktoks o stories en insta';
+             document.getElementById('op3').innerHTML = '<input type="radio" name="opcion" value="opcion3">  Cantar en la calle';
+           
+         }
+
+
+         if(vuelta==3)
+         {
+             c.textContent = "Si pudiera convertir cualquier lugar en su casa, ¿dónde sería?";
+             b.style.backgroundImage = "url('img/karip3.jpg')";
+             document.getElementById('op1').innerHTML = '<input type="radio" name="opcion" value="opcion1"> Cancun';
+             document.getElementById('op2').innerHTML = '<input type="radio" name="opcion" value="opcion2">  Dubai ';
+             document.getElementById('op3').innerHTML = '<input type="radio" name="opcion" value="opcion3">  Barcelona';
+         }
+
+         if(vuelta==4)
+         {
+             c.textContent = "¿Qué nombre le pondría a un perfume inspirado en ella?";
+             b.style.backgroundImage = "url('img/karip4.jpg')";
+             document.getElementById('op1').innerHTML = '<input type="radio" name="opcion" value="opcion1"> Majestad Ardiente';
+             document.getElementById('op2').innerHTML = '<input type="radio" name="opcion" value="opcion2"> Seducción Real';
+             document.getElementById('op3').innerHTML = '<input type="radio" name="opcion" value="opcion3"> Reina del Deseo';
+         }
+
+
+         if(vuelta==5)
+         {
+            c.textContent = "¿Qué haría si un extraterrestre la invitára a su nave por una tarde?";
+             b.style.backgroundImage = "url('img/karip5.jpg')";
+             document.getElementById('op1').innerHTML = '<input type="radio" name="opcion" value="opcion1"> Viajar por todo el mundo';
+             document.getElementById('op2').innerHTML = '<input type="radio" name="opcion" value="opcion2"> Hacer una fiesta en la nave';
+             document.getElementById('op3').innerHTML = '<input type="radio" name="opcion" value="opcion3"> Hacerle preguntas';
+         }
+
+
+         setTimeout(() => {
+        const video = document.getElementById('videoFondo'); // Localiza el video si existe
+        if (video) {
+            video.remove();
+        }
+        b.style.backgroundImage = "none";
+        b.style.backgroundColor = "#f2f2e8";
+        c.hidden = true;
+        respuestas.hidden = false;
+        boton.hidden = false;
+        tiempo.hidden = false;
+        time();
+    }, 6000);
+}
+
+   
+
+function time() {
+    const radios = document.querySelectorAll("input[type='radio']");
+            radios.forEach(radio => {
+                radio.disabled = false;
+            });
+    document.getElementById("btnrespuestas").disabled = false;
+    const divrespuestas = document.getElementById('respuestas');
+    const countdownElement = document.getElementById('tiempo');
+    const resultado = document.getElementById("resultado");
+    const boton = document.getElementById('btnrespuestas');
+    resultado.textContent="";
+
+    if (interval) {
+        clearInterval(interval);
+    }
+
+    let counter = 10;
+
+    interval = setInterval(() => {
+        if (counter > 0) {
+            countdownElement.fontSize = "20px";
+            countdownElement.textContent = `TIEMPO: ${counter} seg`;
+            counter--;
+        } else {
+            const radios = document.querySelectorAll("input[type='radio']");
+            radios.forEach(radio => {
+                radio.disabled = true;
+            });
+            document.getElementById("btnrespuestas").disabled = true;
+            resultado.textContent = "Se acabó el tiempo 🙁";
+            resultado.style.color = "black";
+            resultado.style.fontSize = "20px";
+            resultado.style.marginTop = "15%";
+            vuelta++;
+            sumapuntos = sumapuntos || 0;
+            clearInterval(interval);
+            countdownElement.textContent = "";
+            setTimeout(() => {
+                divrespuestas.hidden = true;
+                if (vuelta <= 5) {
+                    cuestionario(); 
+                } else {
+                        mostrarPuntajeFinal(); 
+                }
+
+
+            }, 2000); 
+        }
+    }, 1000); 
+}
+
+
+
+
+    function startCountdown() 
+    {
+        
+            const countdownElement = document.getElementById('countdown');
+            const b = document.getElementById('body');
+            let counter = 3;
+            b.style.backgroundColor = 'rgb(88, 207, 56)';
+
+            const interval = setInterval(() => {
+                counter--;
+                if (counter > 0) {
+                    countdownElement.textContent = counter; 
+                } else {
+                    countdownElement.textContent = "GO!"; 
+                    countdownElement.style.fontSize = "100px";
+                    countdownElement.style.marginTop = "30%";
+                    clearInterval(interval); 
+
+                    setTimeout(() => {
+                         countdownElement.hidden = true;
+                         b.style.backgroundColor = "white";
+                         cuestionario();
+                    }, 500);
+                }
+            }, 1000); 
+
+
+        }
+
+
+        function respuestas()
+        {
+
+            const radioSeleccionado = document.querySelector("input[type='radio']:checked");
+
+            if (!radioSeleccionado) {
+                alert("Por favor, selecciona una opción");
+                return;
+            }
+            
+
+            if (interval) 
+            {
+                clearInterval(interval);
+            }
+            const count = document.getElementById('tiempo');
+            const boton = document.getElementById('btnrespuestas');
+            const divrespuestas = document.getElementById('respuestas');
+            const c = document.getElementById('cuesti');
+            count.hidden = true;
+            boton.hidden = true;
+            count.textContent = "";
+            
+
+            let respuestaCorrecta = "";
+            if(vuelta == 1) respuestaCorrecta = 'opcion2';
+            if(vuelta == 2) respuestaCorrecta = 'opcion2';
+            if(vuelta == 3) respuestaCorrecta = 'opcion1';
+            if(vuelta == 4) respuestaCorrecta = 'opcion2';
+            if(vuelta == 5) respuestaCorrecta = 'opcion1';
+           
+            const opciones = document.getElementsByName("opcion");
+
+
+            let respuestaSeleccionada = "";
+            for (let i = 0; i < opciones.length; i++) {
+                if (opciones[i].checked) {
+                    respuestaSeleccionada = opciones[i].value;
+                    break;
+                }
+            }
+
+            const resultado = document.getElementById("resultado");
+            resultado.textContent= "";
+
+            if (respuestaSeleccionada === respuestaCorrecta) {
+                resultado.textContent = "¡Correcto! ✅";
+                resultado.style.color = "green";
+                if (vuelta == 1) sumapuntos = 15;
+                if (vuelta == 2) sumapuntos += 25;
+                if (vuelta == 3) sumapuntos += 10;
+                if (vuelta == 4) sumapuntos += 30;
+                if (vuelta == 5) sumapuntos += 20;
+            } else {
+                resultado.textContent = "¡Incorrecto! ❌";
+                resultado.style.color = "red";
+                sumapuntos += 0; 
+            }
+
+
+            setTimeout(() => {
+                vuelta++;
+                resultado.textContent = "";
+                for (let i = 0; i < opciones.length; i++) {
+                    opciones[i].checked = false; 
+                } 
+
+                if (vuelta <= 5) {
+                    divrespuestas.hidden = true;
+                    cuestionario(); 
+                } else {
+                    mostrarPuntajeFinal(); 
+                }
+             }, 2000);
+
+
+        }
+
+        
+        function mostrarPuntajeFinal() {
+            const body = document.getElementById('body');
+            const res = document.getElementById('quiz-form');
+            const resultado = document.getElementById("resultado");
+            resultado.textContent="";
+            body.style.backgroundImage = "none";
+            body.style.backgroundColor = "rgb(34, 105, 193)";
+            res.hidden = true;
+            const divrespuestas = document.getElementById("respuestas");
+            const cuesti = document.getElementById("cuesti");
+            divrespuestas.hidden = true;
+            cuesti.hidden = true;
+   
+
+  
+            resultado.textContent="";
+            body.style.background = "none";
+            localStorage.setItem("puntos", sumapuntos); 
+            window.location.href = "puntos.html";
+
+             
+
+
+
+            resultado.style.color = "white";
+            resultado.style.fontSize = "40px";
+            resultado.style.textAlign = "center";
+
+            setTimeout(() => {
+                const divP = document.getElementById('principal');
+                const bck = document.getElementById('back');
+                body.style.background = "#f2f2e8";
+                resultado.hidden = true;
+                divP.hidden = false;
+                bck.hidden = false;
+            }, 4000);
+        }
+
+
+   </script>
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,358 @@
+/* General styles */
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #b00202; /* Fondo beige */
+    font-family: 'Libre Baskerville', serif;
+  }
+  
+  /* Contenedor principal */
+  .container {
+    display: flex;
+    transform: translateY(-30px); /* Mueve el contenedor 30px hacia arriba */
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    text-align: center;
+    left: 55%;
+  }
+  
+  
+
+  
+  /* Texto principal */
+  .responsive-text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 7vw; /* Ajuste dinámico */
+    font-weight: bold;
+    color: #ffffffcc; /* Color del texto */
+    margin: 0 10px; /* Espacio entre texto y las imágenes */
+    flex-direction: row;
+    gap: 10px; /* Espacio entre las imágenes pequeñas y el texto */
+  }
+  
+  /* Imágenes dentro del texto */
+  .small-img {
+    width: 300px; /* Tamaño de imágenes pequeñas */
+  }
+  
+  /* Ajustes para pantallas más grandes */
+  @media (min-width: 1024px) {
+    .responsive-text {
+      font-size: 6vw;
+    }
+   
+    .small-img {
+      width: 80px;
+      margin: 0%;
+    }
+  }
+  
+  /* Ajustes para pantallas pequeñas */
+  @media (max-width: 768px) {
+    .responsive-text {
+      font-size: 8vw;
+    }
+  
+    .small-img {
+      width: 80px;
+      margin: 0%;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .responsive-text {
+      font-size: 10vw;
+    }
+   
+    .small-img {
+      width: 80px;
+       margin: 0%;
+    }
+  }
+
+  /*nieve*/
+
+  #snowContainer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* Evita interferencias con el botón */
+  }
+  
+  .snowflake {
+    position: absolute;
+    top: -10px; /* Comienza fuera de la pantalla */
+    color: white; /* Color de los copos */
+    font-size: 1em; /* Tamaño base */
+    user-select: none;
+    z-index: 9999;
+    animation: fall linear infinite; /* Aplica la animación */
+  }
+  
+  @keyframes fall {
+    0% {
+      transform: translateY(0) rotate(0deg);
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(100vh) rotate(360deg);
+      opacity: 0;
+    }
+  }
+  
+  /*FOTOS*/
+
+  /* Clase para hacer la card pequeña pero visible */
+.mini-card {
+    width: 120px; /* Ancho reducido para la card */
+    height: auto; /* Altura automática para mantener la proporción */
+    border: 1px solid #ddd; /* Borde sutil */
+    border-radius: 8px; /* Bordes redondeados */
+    text-align: center; /* Centrar texto */
+    background-color: #f9f9f9; /* Fondo ligero */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Sombra ligera */
+    padding: 5px; /* Espaciado interno */
+    overflow: hidden; /* Evita que se salga el contenido */
+    margin-top: 20px;
+    margin: 10px;
+    
+  }
+  
+  .mini-card img {
+    width: 100%; /* Ajusta el tamaño de la imagen */
+    height: 100px; /* Mantiene la imagen cuadrada */
+    object-fit: cover; /* Asegura que la imagen no se deforme */
+    margin: 0 auto; /* Centra la imagen */
+  }
+ 
+  .card-body{
+      height: 12px;
+  }
+ 
+  /*Diseño para iphone----------------------------------------------------------*/
+
+
+  /* Ajustes para iPhone SE, 8 y otros con ancho de 375px */
+@media (max-width: 375px ) {
+ 
+      #cuesti {
+        top: 15%; /* Mueve el elemento más arriba */
+        font-size: 16px; /* Reduce el tamaño del texto */
+        padding: 5px; /* Reduce el padding */
+    }
+
+    #respuestas {
+        top: 40%; /* Centra el formulario */
+        width: 90%; /* Ajusta el ancho para que no desborde */
+        left: 5%; /* Centra horizontalmente */
+    }
+
+    form {
+        font-size: 18px; /* Reduce el tamaño de fuente del formulario */
+        width: 100%; /* Asegúrate de que el formulario ocupe todo el ancho disponible */
+    }
+
+    .divMayor{
+      width: 100%; top: 0%; position: relative; height: fit-content; position: fixed;
+    }
+
+    .titulo{
+      font-family: Bowlby One, serif; color: rgba(255, 255, 255, 0.767); font-size: 50px; letter-spacing: 3px;top: 350px; left: 7px;position: absolute;margin: 0%;
+    }
+
+    .btnStart{
+      border: solid rgb(121, 37, 51) 3px; border-radius: 30px; background-color: rgb(121, 37, 51); color: rgb(255, 255, 255);letter-spacing: 2px;cursor: pointer;position: relative;
+      padding: 12px; letter-spacing: 2px;width: 220px; margin-top: 70px;margin-left: 80px;
+    }
+
+    .imga{
+      height: 420px;
+   }
+
+   .imgd{
+       height: 420px;
+   }
+
+   .imge{
+      height: 415px;
+   }
+
+   .imgm{
+       height: 413px;
+   }
+
+   .imgk{
+       height: 415px;
+   }
+
+   .imgs{
+     height: 415px;
+   }
+}
+
+/* Ajustes para iPhone 11 */
+@media(min-width: 376px) and (max-width: 414px){
+  .divMayor{
+    width: 100%; top: 0%; position: relative; height: fit-content; position: fixed;
+  }
+
+  .titulo{
+    font-family: Bowlby One, serif; color: rgba(255, 255, 255, 0.767); font-size: 50px; letter-spacing: 3px;top: 388px; left: 7px;position: absolute;margin: 0%;
+  }
+
+  .btnStart{
+    border: solid rgb(121, 37, 51) 3px; border-radius: 30px; background-color: rgb(121, 37, 51); color: rgb(255, 255, 255);letter-spacing: 2px;cursor: pointer;position: relative;
+    padding: 15px; letter-spacing: 2px;width: 200px; margin-top: 130px;margin-left: 110px;
+  }
+
+
+}
+
+
+
+/*iphone 12 pro*/
+@media (min-width: 390px) and (max-width: 844px)
+{
+  .divMayor{
+    width: 100%; top: 0%; position: relative; height: fit-content; position: fixed;
+  }
+
+  .titulo{
+    font-family: Bowlby One, serif; color: rgba(255, 255, 255, 0.767); font-size: 50px; letter-spacing: 3px;top: 360px; left: 7px;position: absolute;margin: 0%;
+  }
+
+  .btnStart{
+    border: solid rgb(121, 37, 51) 3px; border-radius: 30px; background-color: rgb(121, 37, 51); color: rgb(255, 255, 255);letter-spacing: 2px;cursor: pointer;position: relative;
+    padding: 15px; letter-spacing: 2px;width: 260px; margin-top: 130px;margin-left: 70px;
+  }
+
+  .imga{
+    height: 430px;
+ }
+
+ .imgd{
+  height: 430px;
+}
+
+.imge{
+  height: 430px;
+}
+
+.imgm{
+  height: 430px;
+}
+
+.imgk{
+  height: 430px;
+}
+
+.imgs{
+  height: 430px;
+}
+
+}
+
+/*iphone XR*/
+@media (min-width: 414px) and (max-width: 896px) 
+{
+  .divMayor{
+    width: 100%; top: 0%; position: relative; height: fit-content; position: fixed;
+  }
+
+  .titulo{
+    font-family: Bowlby One, serif; color: rgba(255, 255, 255, 0.767); font-size: 50px; letter-spacing: 3px;top: 390px; left: 7px;position: absolute;margin: 0%;
+  }
+
+  .btnStart{
+    border: solid rgb(121, 37, 51) 3px; border-radius: 30px; background-color: rgb(121, 37, 51); color: rgb(255, 255, 255);letter-spacing: 2px;cursor: pointer;position: relative;
+    padding: 15px; letter-spacing: 2px;width: 250px; margin-top: 130px;margin-left: 80px;
+  }
+
+  .imga{
+    height: 460px;
+ }
+
+ .imgd{
+  height: 460px;
+}
+
+.imge{
+  height: 460px;
+}
+
+.imgm{
+  height: 460px;
+}
+
+.imgk{
+  height: 460px;
+}
+
+.imgs{
+  height: 460px;
+}
+
+}
+
+
+
+/* Ajustes para iPhone 14 Pro Max */
+@media  (min-width: 430px) and (max-width: 480px){
+  .divMayor{
+    width: 100%; top: 0%; position: relative; height: fit-content; position: fixed;
+  }
+
+  .titulo{
+    font-family: Bowlby One, serif; color: rgba(255, 255, 255, 0.767); font-size: 50px; letter-spacing: 3px;top: 410px; left: 7px;position: absolute;margin: 0%;
+  }
+
+  .btnStart{
+    border: solid rgb(121, 37, 51) 3px; border-radius: 30px; background-color: rgb(121, 37, 51); color: rgb(255, 255, 255);letter-spacing: 2px;cursor: pointer;position: relative;
+    padding: 15px; letter-spacing: 2px;width: 250px; margin-top: 130px;margin-left: 90px;
+  }
+
+  .imga{
+     height: 480px;
+  }
+  .imgd{
+    height: 480px;
+}
+
+.imge{
+  height: 480px;
+}
+
+.imgm{
+  height: 480px;
+}
+
+.imgk{
+  height: 480px;
+}
+
+.imgs{
+  height: 480px;
+}
+
+}
+
+
+#resultado2 {
+  display: block;
+  visibility: visible;
+  color: white; /* Cambia a un color contrastante si el fondo es blanco */
+  background-color: black; /* Opcional: para asegurarte de que se vea */
+  position: relative; /* Si tienes problemas con `left` o `margin`, ajusta esto */
+  text-align: center;
+  font-size: 40px;
+  margin: 20px auto;
+}
